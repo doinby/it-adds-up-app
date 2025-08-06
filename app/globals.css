@@ -5,7 +5,7 @@
 @plugin "daisyui/theme" {
 	name: 'itaddsup';
 	default: true;
-	prefersdark: false;
+	prefersdark: true;
 	color-scheme: 'light';
 	--color-base-100: oklch(98% 0.001 106.423);
 	--color-base-200: oklch(98% 0.001 106.423);
@@ -17,8 +17,10 @@
 	--color-secondary-content: oklch(88.524% 0.014 224.389);
 	--color-accent: oklch(44% 0.011 73.639);
 	--color-accent-content: oklch(97% 0.001 106.424);
-	--color-neutral: oklch(34.465% 0.029 199.194);
-	--color-neutral-content: oklch(83.302% 0.003 326.261);
+	--color-neutral: oklch(86% 0.005 56.366);
+	--color-neutral-content: oklch(21% 0.006 56.043);
+	/* --color-neutral: oklch(34.465% 0.029 199.194);
+	--color-neutral-content: oklch(83.302% 0.003 326.261); */
 	--color-info: oklch(79.49% 0.063 184.558);
 	--color-info-content: oklch(15.898% 0.012 184.558);
 	--color-success: oklch(74.722% 0.072 131.116);
