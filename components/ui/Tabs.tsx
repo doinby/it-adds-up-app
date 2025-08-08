@@ -15,7 +15,7 @@ export default function Tabs() {
 
 	return (
 		<>
-			<div className='tabs tabs-lift w-full'>
+			<div className='tabs tabs-lift max-w-[800px]'>
 				<input
 					type='radio'
 					name='my_tabs_3'
