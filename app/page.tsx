@@ -15,15 +15,9 @@ export default function HomePage() {
 	const [isSidebarClose, setSidebarClose] = useState(true);
 
 	const sidebarIcon = isSidebarClose ? (
-		<PanelLeftOpen
-			className='opacity-85'
-			color='oklch(89.925% 0.016 262.749)'
-		/>
+		<PanelLeftOpen color='oklch(89.925% 0.016 262.749 / 85%)' />
 	) : (
-		<PanelLeftClose
-			className='opacity-85'
-			color='oklch(89.925% 0.016 262.749)'
-		/>
+		<PanelLeftClose color='oklch(89.925% 0.016 262.749 / 85%)' />
 	);
 
 	function handleSidebarClose() {
