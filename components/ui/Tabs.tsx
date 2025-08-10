@@ -1,13 +1,21 @@
 import { useState } from 'react';
 import { ChangeEvent } from 'react';
 import Tab1 from './Tab1';
-import Tab2 from './Tab2';
+import Tab from './Tab';
+import classNames from 'classnames';
 
 export default function Tabs() {
-	const [input, setInput] = useState('');
+	const TAB_01 = 'Calculate Price';
+	const TAB_02 = 'Calculate Percent';
+	const TAB_LABELS = ['Calculate Price', 'Calculate Percent'];
 
-	const tab1 = 'Calculate Price';
-	const tab2 = 'Calculate Percent';
+	const [input, setInput] = useState('');
+	const [activeTab, setActiveTab] = useState<0 | 1>(1);
+
+	const inputTabClass = classNames({
+		tab: true,
+		// 'tab-active'
+	});
 
 	function handleInputChange(e: ChangeEvent<HTMLInputElement>) {
 		setInput(e.target.value);
@@ -18,9 +26,9 @@ export default function Tabs() {
 			<div className='tabs tabs-lift max-w-[800px]'>
 				<input
 					type='radio'
-					name='my_tabs_3'
+					name='discount-calculator'
 					className='tab'
-					aria-label={tab1}
+					aria-label={TAB_01}
 				/>
 				<div className='tab-content bg-base-100 border-base-300 p-6'>
 					<Tab1 />
@@ -28,18 +36,17 @@ export default function Tabs() {
 
 				<input
 					type='radio'
-					name='my_tabs_3'
-					className='tab'
-					aria-label={tab2}
-					defaultChecked
+					name='discount-calculator'
+					className='tab tab-active'
+					aria-label={TAB_02}
 				/>
 				<div className='tab-content bg-base-100 border-base-300 p-6'>
-					<Tab2 />
+					<Tab />
 				</div>
 
 				{/* <input
 					type='radio'
-					name='my_tabs_3'
+					name='discount-calculator'
 					className='tab'
 					aria-label='Tab 3'
 				/>

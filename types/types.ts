@@ -1,4 +1,4 @@
-type result = {
+export type Result = {
 	name: string;
 	beforePrice: number;
 	percent: number;
@@ -6,4 +6,4 @@ type result = {
 	dollarSaved: number;
 };
 
-type history = result[];
+type history = Result[];

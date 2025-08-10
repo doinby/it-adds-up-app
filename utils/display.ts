@@ -3,11 +3,6 @@ interface HideLongNumberInterface {
 	afterPrice: number;
 	dollarSaved: number;
 }
-// interface HideLongNumberInterface {
-// 	beforePrice: { beforePrice: number };
-// 	afterPrice: { afterPrice: number };
-// 	dollarSaved: { dollarSaved: number };
-// }
 
 export function hideLongNumber(object: HideLongNumberInterface) {
 	return Object.fromEntries(
