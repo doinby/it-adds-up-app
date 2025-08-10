@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Tabs from '@/components/ui/Tabs';
 import Sidebar from '@/components/Sidebar';
 import SidebarButton from '@/components/ui/SidebarButton';
+import Form from '@/components/ui/Form';
 
 export default function HomePage() {
 	const [isSidebarClose, setSidebarClose] = useState(true);
@@ -20,7 +21,10 @@ export default function HomePage() {
 				<h1 className='text-primary text-center text-2xl'>
 					Discount Calculator
 				</h1>
-				<Tabs />
+
+				{/* <Tabs /> */}
+
+				<Form />
 			</main>
 		</>
 	);
