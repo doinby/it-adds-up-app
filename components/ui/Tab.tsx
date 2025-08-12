@@ -1,30 +1,46 @@
-import { Result } from '@/types/types';
-import { ArrowRightLeft, Bookmark, DollarSign } from 'lucide-react';
+import { ArrowRightLeft, Bookmark, DollarSign, RotateCcw } from 'lucide-react';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import InputNoOption from './InputNoOption';
+import { calculatePercent } from '@/utils/calculations';
+import { Result } from '@/types/types';
+import { useState } from 'react';
 
-enum PriceType {
-	beforePrice = 'beforePrice',
-	afterPrice = 'afterPrice',
-}
-
-interface GetPercentForm {
-	name?: string;
-	beforePrice: string;
-	afterPrice: string;
-	optionLeft: PriceType;
-	optionRight: PriceType;
+export interface FormInputInterface {
+	beforePriceInput: number;
+	afterPriceInput: number;
 }
 
 export default function Tab() {
 	const REGEX_FLOAT = /^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$/g;
-	const result = {
-		beforePrice: '30.00',
-		percent: '15',
+	const INPUT_CONSTRAINTS = {
+		required: {
+			value: true,
+			message: 'Required',
+		},
+		maxLength: {
+			value: 10,
+			message: 'Price must be less than 1 billions',
+		},
+		valueAsNumber: true,
+		// pattern: {
+		// 	value: REGEX_FLOAT,
+		// 	message: 'Value of 0-9 is required',
+		// },
+	};
+
+	const [result, setResult] = useState<Result>({
+		name: undefined,
+		beforePrice: undefined,
 		afterPrice: '25.50',
 		dollarSaved: '4.50',
 	};
 
-	const { register, handleSubmit } = useForm<GetPercentForm>();
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm<FormInputInterface>();
+	// console.log(errors);
 
 	const onSubmit: SubmitHandler<GetPercentForm> = (data) => console.log(data);
 
@@ -32,81 +48,56 @@ export default function Tab() {
 		<>
 			<form
 				onSubmit={handleSubmit(onSubmit)}
-				className='grid grid-rows-[auto_1fr_auto] gap-4'
+				className='border-base-300 space-y-6'
 			>
-				<p className='text-accent text-sm leading-8 italic'>Calculate...</p>
-				<div className='row-start-2 join gap-0 border-base-300'>
-					<select
-						{...register('optionLeft')}
-						className='select join-item w-24 text-xs'
-					>
-						<option value='beforePrice' aria-selected>
-							original $
-						</option>
-						<option value='afterPrice'>discounted $</option>
-					</select>
-					<label className='input join-item'>
-						<DollarSign />
-						<input
-							{...register('beforePrice', {
-								required: true,
-								maxLength: 10,
-								pattern: REGEX_FLOAT,
-							})}
-							type='text'
-							className='join-item'
-							placeholder='30.00'
-						/>
-					</label>
-					<button className='join-item btn btn-neutral w-14'>
+				<div className='join grid grid-cols-[3fr_1fr_3fr] my-4 pb-4'>
+					<InputNoOption
+						register={register('beforePriceInput', INPUT_CONSTRAINTS)}
+						error={errors.beforePriceInput}
+						// label={
+						// 	<span className='flex gap-1'>
+						// 		BEFORE
+						// 		<DollarSign size={15} />
+						// 	</span>
+						// }
+					/>
+
+					<button type='button' className='join-item btn btn-secondary'>
 						<ArrowRightLeft />
 					</button>
-					<select
-						{...register('optionRight')}
-						className='select join-item w-24 text-xs'
-					>
-						<option value='beforePrice'>original $</option>
-						<option value='afterPrice' aria-selected>
-							discounted $
-						</option>
-					</select>
-					<label className='input join-item'>
-						<DollarSign />
-						<input
-							{...register('afterPrice', {
-								required: true,
-								maxLength: 10,
-								pattern: REGEX_FLOAT,
-							})}
-							type='text'
-							className='join-item'
-							placeholder='25.00'
-						/>
-					</label>
+
+					<InputNoOption
+						register={register('afterPriceInput', INPUT_CONSTRAINTS)}
+						error={errors.afterPriceInput}
+						// label={
+						// 	<span className='flex gap-1'>
+						// 		AFTER
+						// 		<DollarSign size={15} />
+						// 	</span>
+						// }
+					/>
 				</div>
 
-				<div className='card-actions w-full flex justify-center'>
-					<input type='submit' className='btn btn-wide' />
-					<input type='reset' className='btn btn-wide' />
+				<div className='w-full flex flex-wrap gap-x-8 gap-y-4 justify-center'>
+					<button type='submit' className='btn btn-primary btn-wide'>
+						Calculate
+					</button>
+					<button type='reset' className='btn btn-secondary'>
+						<RotateCcw />
+					</button>
 				</div>
+			</form>
 
-				<div className='card'>
-					<div className='card-body flex leading-10'>
-						<div className='card-title'>
+			<div className=''>
 							<h3 className=''>Result</h3>
 							<button className='btn btn-ghost btn-sm btn-circle'>
 								<Bookmark size={20} />
 							</button>
-						</div>
 						<p>
 							An item originally cost{' '}
-							<span className='text-primary font-black'>
-								${result.beforePrice}
-							</span>{' '}
+					<span className='text-primary font-black'>${result.beforePrice}</span>{' '}
 							is reduced to{' '}
-							<span className='text-primary font-black'>
-								${result.afterPrice}
-							</span>
+					<span className='text-primary font-black'>${result.afterPrice}</span>
 							, the applied offers are:
 							<br />
 							Discount Percent:{' '}
@@ -119,12 +110,7 @@ export default function Tab() {
 								${result.dollarSaved}
 							</span>
 						</p>
-						{/* <button className='self-center card-action btn btn-primary btn-wide'>
-							Reset
-						</button> */}
-					</div>
 				</div>
-			</form>
 		</>
 	);
 }
