@@ -1,5 +1,5 @@
-import Tab1 from './Tab1';
-import Tab from './Tab';
+import Tab from './ui/Tab';
+import Tab1 from './ui/Tab1';
 
 export default function Tabs() {
 	return (

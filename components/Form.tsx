@@ -1,7 +1,7 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { DollarSign } from 'lucide-react';
 import classNames from 'classnames';
-import InputNoOption from './InputNoOption';
+import InputNoOption from './ui/InputNoOption';
 
 export interface FormInputInterface {
 	beforePriceInput: string;

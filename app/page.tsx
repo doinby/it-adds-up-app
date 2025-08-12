@@ -1,10 +1,11 @@
 'use client';
 
 import { useState } from 'react';
-import Tabs from '@/components/ui/Tabs';
+import Tabs from '@/components/Tabs';
 import Sidebar from '@/components/Sidebar';
 import SidebarButton from '@/components/ui/SidebarButton';
-import Form from '@/components/ui/Form';
+import Form from '@/components/Form';
+import PlainTextResult from '@/components/ui/PlainTextResult';
 
 export default function HomePage() {
 	const [isSidebarClose, setSidebarClose] = useState(true);
