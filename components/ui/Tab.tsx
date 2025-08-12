@@ -31,9 +31,10 @@ export default function Tab() {
 	const [result, setResult] = useState<Result>({
 		name: undefined,
 		beforePrice: undefined,
-		afterPrice: '25.50',
-		dollarSaved: '4.50',
-	};
+		afterPrice: undefined,
+		percent: undefined,
+		dollarSaved: undefined,
+	});
 
 	const {
 		register,
@@ -42,7 +43,15 @@ export default function Tab() {
 	} = useForm<FormInputInterface>();
 	// console.log(errors);
 
-	const onSubmit: SubmitHandler<GetPercentForm> = (data) => console.log(data);
+	const onSubmit: SubmitHandler<FormInputInterface> = (data) => {
+		const { beforePriceInput, afterPriceInput } = data;
+		setResult((prev) => ({
+			...prev,
+			...calculatePercent(beforePriceInput, afterPriceInput),
+			beforePrice: beforePriceInput,
+			afterPrice: afterPriceInput,
+		}));
+	};
 
 	return (
 		<>
@@ -89,28 +98,28 @@ export default function Tab() {
 			</form>
 
 			<div className=''>
-							<h3 className=''>Result</h3>
-							<button className='btn btn-ghost btn-sm btn-circle'>
-								<Bookmark size={20} />
-							</button>
-						<p>
-							An item originally cost{' '}
+				<h3 className=''>Result</h3>
+				<button className='btn btn-ghost btn-sm btn-circle'>
+					<Bookmark size={20} />
+				</button>
+				<p>
+					An item originally cost{' '}
 					<span className='text-primary font-black'>${result.beforePrice}</span>{' '}
-							is reduced to{' '}
+					is reduced to{' '}
 					<span className='text-primary font-black'>${result.afterPrice}</span>
-							, the applied offers are:
-							<br />
-							Discount Percent:{' '}
-							<span className='text-2xl text-primary font-black'>
-								{result.percent}%
-							</span>
-							<br />
-							Money Saved:{' '}
-							<span className='text-2xl text-primary font-black'>
-								${result.dollarSaved}
-							</span>
-						</p>
-				</div>
+					, the applied offers are:
+					<br />
+					Discount Percent:{' '}
+					<span className='text-2xl text-primary font-black'>
+						{result.percent}%
+					</span>
+					<br />
+					Money Saved:{' '}
+					<span className='text-2xl text-primary font-black'>
+						${result.dollarSaved}
+					</span>
+				</p>
+			</div>
 		</>
 	);
 }

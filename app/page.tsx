@@ -22,9 +22,9 @@ export default function HomePage() {
 					Discount Calculator
 				</h1>
 
-				{/* <Tabs /> */}
+				<Tabs />
 
-				<Form />
+				{/* <Form /> */}
 			</main>
 		</>
 	);

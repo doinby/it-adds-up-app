@@ -4,6 +4,10 @@ interface HideLongNumberInterface {
 	dollarSaved: number;
 }
 
+export function isEmptyObject(object: object) {
+	return Object.keys(object).length > 0;
+}
+
 export function hideLongNumber(object: HideLongNumberInterface) {
 	return Object.fromEntries(
 		Object.entries(object)

@@ -1,8 +1,9 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { DollarSign } from 'lucide-react';
 import classNames from 'classnames';
+import InputNoOption from './InputNoOption';
 
-interface FormInputInterface {
+export interface FormInputInterface {
 	beforePriceInput: string;
 	afterPriceInput: string;
 }
@@ -39,7 +40,7 @@ export default function Form() {
 				className='card-body flex flex-col gap-6 items-center'
 			>
 				<div className='join my-4'>
-					<div className='relative join-item'>
+					{/* <div className='relative join-item'>
 						<p className='absolute left-0 top-[-20px] text-sm'>
 							Price before discount:
 						</p>
@@ -61,13 +62,34 @@ export default function Form() {
 						<p className='absolute right-0 bottom-[-24px] text-sm text-error'>
 							{errors.beforePriceInput?.message}
 						</p>
-					</div>
+					</div> */}
+					<InputNoOption
+						register={register('beforePriceInput', INPUT_CONSTRAINTS)}
+						error={errors.beforePriceInput}
+						label={
+							<span className='flex gap-1'>
+								BEFORE
+								<DollarSign size={15} />
+							</span>
+						}
+					/>
 
 					<button type='button' className='join-item btn'>
 						Swap
 					</button>
 
-					<div className='relative join-item'>
+					<InputNoOption
+						register={register('afterPriceInput', INPUT_CONSTRAINTS)}
+						error={errors.afterPriceInput}
+						label={
+							<span className='flex gap-1'>
+								AFTER
+								<DollarSign size={15} />
+							</span>
+						}
+					/>
+
+					{/* <div className='relative join-item'>
 						<p className='absolute left-0 top-[-20px] text-sm'>
 							Price after discount:
 						</p>
@@ -89,7 +111,7 @@ export default function Form() {
 								{errors.afterPriceInput?.message}
 							</p>
 						</label>
-					</div>
+					</div> */}
 				</div>
 
 				<input type='submit' className='btn btn-wide' />
