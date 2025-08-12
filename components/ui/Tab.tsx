@@ -4,6 +4,7 @@ import InputNoOption from './InputNoOption';
 import { calculatePercent } from '@/utils/calculations';
 import { Result } from '@/types/types';
 import { useState } from 'react';
+import ResultCard from './ResultCard';
 
 export interface FormInputInterface {
 	beforePriceInput: number;
