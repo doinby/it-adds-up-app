@@ -97,7 +97,7 @@ export default function Tab() {
 				</div>
 			</form>
 
-			<div className=''>
+			{/* <div className=''>
 				<h3 className=''>Result</h3>
 				<button className='btn btn-ghost btn-sm btn-circle'>
 					<Bookmark size={20} />
@@ -119,7 +119,7 @@ export default function Tab() {
 						${result.dollarSaved}
 					</span>
 				</p>
-			</div>
+			</div> */}
 		</>
 	);
 }

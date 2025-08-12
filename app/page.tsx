@@ -24,6 +24,7 @@ export default function HomePage() {
 				</h1>
 
 				<Tabs />
+				<PlainTextResult />
 
 				{/* <Form /> */}
 			</main>
