@@ -5,8 +5,8 @@
 @plugin "daisyui";
 @plugin "daisyui/theme" {
 	name: 'itaddsup';
-	default: true;
-	prefersdark: true;
+	default: false;
+	prefersdark: false;
 	color-scheme: 'light';
 	--color-base-100: oklch(98% 0.001 106.423);
 	--color-base-200: oklch(98% 0.001 106.423);
@@ -46,7 +46,7 @@ body {
 }
 
 body {
-	@apply grid grid-cols-[auto_1fr] grid-rows-[1fr_auto] font-serif tracking-wider;
+	@apply grid grid-cols-[auto_1fr] grid-rows-[1fr_auto] font-serif tracking-wider bg-base-300;
 	/* @apply sm:flex sm:flex-col; */
 }
 

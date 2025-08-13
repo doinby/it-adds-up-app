@@ -2,7 +2,7 @@ import { Copy } from 'lucide-react';
 
 export default function PlainTextResult() {
 	return (
-		<div className='mockup-code relative bg-neutral text-neutral-content w-full'>
+		<div className='mockup-code w-96 relative bg-neutral text-neutral-content'>
 			<button className='absolute top-4 right-4 btn btn-sm btn-circle btn-ghost'>
 				<Copy size={16} />
 			</button>
