@@ -9,10 +9,10 @@ import ResultCard from '@/components/ui/ResultCard';
 
 export default function HomePage() {
 	const result = {
-		beforePrice: 40.5,
-		afterPrice: 35.0,
-		percent: 9,
-		dollarSaved: 5.5,
+		beforePrice: 4000.5,
+		afterPrice: 3500.0,
+		percent: 9.86,
+		dollarSaved: 500.5,
 	};
 	const [isSidebarClose, setSidebarClose] = useState(true);
 
