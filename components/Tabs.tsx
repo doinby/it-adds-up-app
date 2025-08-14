@@ -4,7 +4,7 @@ import Tab1 from './ui/Tab1';
 export default function Tabs() {
 	return (
 		<>
-			<div className='tabs tabs-lift max-w-[800px]'>
+			<div className='tabs tabs-lift'>
 				<input
 					type='radio'
 					name='my_tabs_3'

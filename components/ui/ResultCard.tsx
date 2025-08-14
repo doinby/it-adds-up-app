@@ -5,7 +5,7 @@ export default function ResultCard({ result }: { result: Result }) {
 	const { beforePrice, afterPrice, percent, dollarSaved } = result;
 
 	return (
-		<article className='w-full md:w-96 text-success-content rounded-lg bg-base-100 overflow-clip'>
+		<article className='text-success-content rounded-lg bg-base-100 overflow-clip'>
 			<header className='relative px-8 py-5 grid grid-cols-[1fr_auto] grid-rows-[auto_1fr_auto] gap-x-4 items-center justify-center overflow-clip bg-success'>
 				<TicketPercent
 					size={200}

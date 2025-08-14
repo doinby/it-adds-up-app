@@ -40,19 +40,17 @@
 	--noise: 0;
 }
 
-html,
 body {
-	@apply h-full;
-}
-
-body {
-	@apply grid grid-cols-[auto_1fr] grid-rows-[1fr_auto] font-serif tracking-wider bg-base-300;
+	@apply h-full grid grid-cols-[auto_1fr] grid-rows-[1fr_auto] font-serif tracking-wider bg-base-300;
 	/* @apply sm:flex sm:flex-col; */
 }
 
 main {
 	@apply col-start-2 row-start-1;
-	/* @apply grow; */
+}
+
+main > * {
+	@apply w-full md:w-xl;
 }
 
 footer {
