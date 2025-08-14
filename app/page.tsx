@@ -4,16 +4,10 @@ import { useState } from 'react';
 import Tabs from '@/components/Tabs';
 import Sidebar from '@/components/Sidebar';
 import SidebarButton from '@/components/ui/SidebarButton';
-import PlainTextResult from '@/components/ui/PlainTextResult';
+import PlainTextResult from '@/components/ui/ResultPlainText';
 import ResultCard from '@/components/ui/ResultCard';
 
 export default function HomePage() {
-	const result = {
-		beforePrice: 4000.5,
-		afterPrice: 3500.0,
-		percent: 9.86,
-		dollarSaved: 500.5,
-	};
 	const [isSidebarClose, setSidebarClose] = useState(true);
 
 	return (
@@ -30,8 +24,6 @@ export default function HomePage() {
 				</h1>
 
 				<Tabs />
-				<ResultCard result={result} />
-				<PlainTextResult />
 
 				{/* <Form /> */}
 			</main>
